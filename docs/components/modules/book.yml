@@ -1,0 +1,53 @@
+components:
+  schemas:
+    BookSchema:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+          example: 1
+        title:
+          type: string
+          required: true
+          example: 'Livro 01'
+        author:
+          type: string
+          required: true
+          example: 'Autor 01'
+        imageUrl:
+          type: string
+          required: true
+          example: 'http://site.com/image.png'
+        summary:
+          type: string
+          required: true
+          example: 'Resumo do livro (campo opcional)'
+        content:
+          type: string
+          required: true
+          example: 'Conteúdo do livro'
+        contentAudio:
+          type: string
+          required: true
+          example: 'http://site.com/audiobook.mp3'
+        explanation:
+          type: string
+          required: true
+          example: 'Explicação do livro'
+        explanationAudio:
+          type: string
+          required: true
+          example: 'http://site.com/audiobook.mp3'
+        categoryId:
+          type: number
+          required: true
+          example: 1
+        createdAt:
+          type: date
+          readOnly: true
+          example: '2023-01-01T00:19:12.088Z'
+        updatedAt:
+          type: date
+          readOnly: true
+          example: '2023-01-01T00:19:12.088Z'

@@ -1,0 +1,23 @@
+paths:
+  /categories:
+    get:
+      summary: "Rota utilizada para listar as categorias"
+      tags:
+          - Categorias dos livros
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CategorySchema"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"

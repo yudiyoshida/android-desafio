@@ -1,0 +1,27 @@
+paths:
+  /users/account/create:
+    post:
+      summary: "Rota 02/02 para o fluxo de 'Criar uma conta'"
+      tags:
+        - Cadastro
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/UserSchema"
+      responses:
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/UserSchema"
+        '400':
+          $ref: '#/components/responses/400'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'

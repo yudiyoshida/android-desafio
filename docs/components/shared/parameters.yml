@@ -1,0 +1,38 @@
+components:
+  # Reusable path, query, header and cookie parameters
+  parameters:
+    IdParameter:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: number
+        example: 1
+
+    LimitParameter:
+      in: query
+      name: limit
+      schema:
+        type: number
+        example: 10
+
+    PageParameter:
+      in: query
+      name: page
+      schema:
+        type: number
+        example: 1
+
+    CategoryIdParameter:
+      in: query
+      name: categoryId
+      schema:
+        type: number
+        example: 1
+
+    SearchParameter:
+      in: query
+      name: search
+      schema:
+        type: string
+        example: 'Filtra livros pelo título ou nome do autor'

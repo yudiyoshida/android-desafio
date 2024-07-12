@@ -1,0 +1,48 @@
+components:
+  schemas:
+    UserSchema:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+          example: 1
+        name:
+          type: string
+          required: true
+          example: 'User 01'
+        birthday:
+          type: string
+          required: true
+          example: '2000-12-31'
+        phone:
+          type: string
+          required: true
+          example: '00123456789'
+        email:
+          type: string
+          required: true
+          example: 'user@getnada.com'
+        password:
+          type: string
+          writeOnly: true
+          example: '123456789'
+        confirmPassword:
+          type: string
+          writeOnly: true
+          example: '123456789'
+        # status:
+        #   type: string
+        #   readOnly: true
+        #   example: 'ativo'
+        imageUrl:
+          type: string
+          example: 'campo opcional'
+        createdAt:
+          type: date
+          readOnly: true
+          example: '2023-01-01T00:19:12.088Z'
+        updatedAt:
+          type: date
+          readOnly: true
+          example: '2023-01-01T00:19:12.088Z'
