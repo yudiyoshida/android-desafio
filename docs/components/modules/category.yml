@@ -2,6 +2,7 @@ components:
   schemas:
     CategorySchema:
       type: object
+      readOnly: true
       properties:
         id:
           type: number
@@ -11,10 +12,6 @@ components:
           type: string
           required: true
           example: 'Categoria 01'
-        imageUrl:
-          type: string
-          required: true
-          example: 'http://site.com/image.png'
         createdAt:
           type: date
           readOnly: true

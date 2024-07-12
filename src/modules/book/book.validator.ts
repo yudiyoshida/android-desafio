@@ -2,6 +2,7 @@ import BaseValidator from '@abstracts/validator';
 import { RequestHandler } from 'express';
 import { z } from 'zod';
 import { CreateBook } from './dtos/create-book.dto';
+import { UpdateBook } from './dtos/update-book.dto';
 
 class Validator extends BaseValidator {
   constructor() {
@@ -10,6 +11,10 @@ class Validator extends BaseValidator {
 
   public createOne: RequestHandler = async(req, res, next) => {
     this.validateSchema('body', CreateBook, req, next);
+  };
+
+  public updateOne: RequestHandler = async(req, res, next) => {
+    this.validateSchema('body', UpdateBook, req, next);
   };
 
   public queryParams: RequestHandler = async(req, res, next) => {

@@ -13,7 +13,7 @@ class Controller {
     try {
       const { limit = 10, page = 1, categoryId, search = '' } = req.query as RequestQueryOutputDto;
 
-      const books = await Service.findAll(+limit, +page, categoryId, search);
+      const books = await Service.findAll(+limit, +page, req.auth.id, categoryId, search);
       const booksPaginated = PaginationHelper.paginate(books, +limit, +page);
       res.status(200).json(booksPaginated);
 
@@ -25,9 +25,7 @@ class Controller {
 
   public findOne: RequestHandler = async(req, res, next) => {
     try {
-      const { id } = req.params;
-
-      const book = await Service.findById(+id);
+      const book = await Service.findById(+req.params.id, req.auth.id);
       res.status(200).json(book);
 
     } catch (err: any) {
@@ -38,11 +36,24 @@ class Controller {
 
   public createOne: RequestHandler = async(req, res, next) => {
     try {
-      const { categoryId, ...data } = req.body as CreateBookOutputDto;
+      const data = req.body as CreateBookOutputDto;
 
-      const category = await CategoryService.findById(categoryId);
-      const newBook = await Service.create(data, category.id);
+      await CategoryService.findById(data.categoryId);
+      const newBook = await Service.create({ ...data, userId: req.auth.id });
       res.status(201).json(newBook);
+
+    } catch (err: any) {
+      next(new AppException(err.status ?? 500, err.message));
+
+    }
+  };
+
+  public deleteOne: RequestHandler = async(req, res, next) => {
+    try {
+      const book = await Service.findById(+req.params.id, req.auth.id);
+
+      await Service.delete(book.id);
+      res.sendStatus(204);
 
     } catch (err: any) {
       next(new AppException(err.status ?? 500, err.message));

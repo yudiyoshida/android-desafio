@@ -2,7 +2,7 @@ export default {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Letbox REST API Documentation',
+      title: 'Desafio Android - REST API Documentation',
       version: '1.0.0',
     },
     servers: [

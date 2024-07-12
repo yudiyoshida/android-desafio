@@ -6,7 +6,7 @@ import Validator from './user.validator';
 const router = Router();
 
 router
-.route('/account/create')
+.route('/')
 .post(
   Validator.createOne,
   Controller.createOne,

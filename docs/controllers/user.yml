@@ -1,7 +1,7 @@
 paths:
-  /users/account/create:
+  /users:
     post:
-      summary: "Rota 02/02 para o fluxo de 'Criar uma conta'"
+      summary: "Criar uma conta"
       tags:
         - Cadastro
       requestBody:

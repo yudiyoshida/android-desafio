@@ -1,7 +1,6 @@
 import PasswordHelper from '@helpers/password';
 import { z } from 'zod';
 
-
 export const CreateUserInput = z.object({
   name: z.string().trim().min(1),
   imageUrl: z.string().trim().url().optional().nullable(),
@@ -18,8 +17,11 @@ export const CreateUserInput = z.object({
 
 export type CreateUserOutputDto = z.output<typeof CreateUser>
 export const CreateUser = CreateUserInput.transform((body) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { confirmPassword, ...rest } = body;
+
   return {
-    ...body,
+    ...rest,
     password: PasswordHelper.hash(body.password),
   };
 });

@@ -6,7 +6,7 @@ class Validator extends BaseValidator {
   constructor() {
     super();
   }
-  
+
   public createOne: RequestHandler = async(req, res, next) => {
     this.validateSchema('body', CreateUser, req, next);
   };

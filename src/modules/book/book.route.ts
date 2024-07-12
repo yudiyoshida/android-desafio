@@ -24,10 +24,13 @@ router
 .route('/:id')
 .all(
   Auth.isAuthenticated,
+  Validator.pathParams,
 )
 .get(
-  Validator.pathParams,
   Controller.findOne,
+)
+.delete(
+  Controller.deleteOne,
 );
 
 export default router;

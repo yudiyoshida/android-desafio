@@ -12,10 +12,11 @@ class Service {
     this.repository = DataSource.book;
   }
 
-  public async findAll(limit: number, page: number, categoryId?: number, search?: string) {
+  public async findAll(limit: number, page: number, userId: number, categoryId?: number, search?: string) {
     return DataSource.$transaction([
       this.repository.findMany({
         where: {
+          userId,
           categoryId,
           OR: [
             { title: { contains: search } },
@@ -29,6 +30,7 @@ class Service {
       }),
       this.repository.count({
         where: {
+          userId,
           categoryId,
           OR: [
             { title: { contains: search } },
@@ -39,9 +41,9 @@ class Service {
     ]);
   }
 
-  public async findById(id: number) {
-    const book = await this.repository.findUnique({
-      where: { id },
+  public async findById(id: number, userId: number) {
+    const book = await this.repository.findFirst({
+      where: { id, userId },
       select: BookDto,
     });
 
@@ -49,15 +51,16 @@ class Service {
     else return book;
   }
 
-  public async create(data: Prisma.BookCreateWithoutCategoryInput, categoryId: number) {
+  public async create(data: Prisma.BookUncheckedCreateInput) {
     return this.repository.create({
-      data: {
-        ...data,
-        category: {
-          connect: { id: categoryId },
-        },
-      },
+      data,
       select: BookDto,
+    });
+  }
+
+  public async delete(id: number) {
+    return this.repository.delete({
+      where: { id },
     });
   }
 }

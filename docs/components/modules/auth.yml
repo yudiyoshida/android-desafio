@@ -1,29 +1,8 @@
 components:
   schemas:
-    AccountSchema:
-      type: object
-      properties:
-        id:
-          type: number
-          example: 1
-        role:
-          type: string
-          example: 'user'
-        type:
-          type: string
-          example: 'web'
-        name:
-          type: string
-          example: 'User 01'
-        imageUrl:
-          type: string
-          example: 'http://site.com/files/image.png'
-
     LoginSchema:
       type: object
       properties:
-        account:
-          $ref: '#/components/schemas/AccountSchema'
         token:
           type: string
 

@@ -11,6 +11,10 @@ components:
           type: string
           required: true
           example: 'Livro 01'
+        summary:
+          type: string
+          required: true
+          example: 'Resumo do livro (campo opcional)'
         author:
           type: string
           required: true
@@ -19,29 +23,9 @@ components:
           type: string
           required: true
           example: 'http://site.com/image.png'
-        summary:
-          type: string
-          required: true
-          example: 'Resumo do livro (campo opcional)'
-        content:
-          type: string
-          required: true
-          example: 'Conteúdo do livro'
-        contentAudio:
-          type: string
-          required: true
-          example: 'http://site.com/audiobook.mp3'
-        explanation:
-          type: string
-          required: true
-          example: 'Explicação do livro'
-        explanationAudio:
-          type: string
-          required: true
-          example: 'http://site.com/audiobook.mp3'
         categoryId:
           type: number
-          required: true
+          writeOnly: true
           example: 1
         createdAt:
           type: date
@@ -51,3 +35,5 @@ components:
           type: date
           readOnly: true
           example: '2023-01-01T00:19:12.088Z'
+        category:
+          $ref: '#/components/schemas/CategorySchema'

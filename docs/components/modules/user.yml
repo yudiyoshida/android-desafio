@@ -11,14 +11,6 @@ components:
           type: string
           required: true
           example: 'User 01'
-        birthday:
-          type: string
-          required: true
-          example: '2000-12-31'
-        phone:
-          type: string
-          required: true
-          example: '00123456789'
         email:
           type: string
           required: true
@@ -31,13 +23,6 @@ components:
           type: string
           writeOnly: true
           example: '123456789'
-        # status:
-        #   type: string
-        #   readOnly: true
-        #   example: 'ativo'
-        imageUrl:
-          type: string
-          example: 'campo opcional'
         createdAt:
           type: date
           readOnly: true

@@ -9,11 +9,11 @@ import { CreateUserOutputDto } from './dtos/create-user.dto';
 class Controller {
   public createOne: RequestHandler = async(req, res, next) => {
     try {
-      const { confirmPassword, ...data } = req.body as CreateUserOutputDto;
+      const data = req.body as CreateUserOutputDto;
 
       // Verifica se já existe um registro com os dados informados.
-      const user = await Service.findByUniqueFields(data);
-      if (user) throw new AppException(409, ErrorMessages.ACCOUNT_ALREADY_EXISTS);
+      const emailAlreadyExists = await Service.findByUniqueFields(data);
+      if (emailAlreadyExists) throw new AppException(409, ErrorMessages.ACCOUNT_ALREADY_EXISTS);
 
       // Cadastra o novo usuário.
       const newUser = await Service.create(data);
