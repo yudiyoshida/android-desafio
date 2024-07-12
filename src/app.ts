@@ -1,5 +1,4 @@
 import compression from 'compression';
-import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
@@ -30,11 +29,10 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cors());
-    this.app.use(cookieParser());
     this.app.use(compression());
     this.app.use(helmet());
   }
-  
+
   // Desabilitar a rota do swagger quando fizer deploy em produção.
   routes() {
     this.app.use('/swagger', swaggerUI.serve, swaggerUI.setup(swaggerJsdoc(swaggerOptions), { explorer: true }));
